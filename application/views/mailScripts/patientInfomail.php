@@ -1,0 +1,1 @@
+<h1>Patient mail info</h1>

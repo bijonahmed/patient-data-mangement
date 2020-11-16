@@ -1,0 +1,362 @@
+<!DOCTYPE html>  
+  <script src="<?php echo base_url(); ?>admin_panel/js/jquery.js"></script>
+
+ 
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18;
+  background-color: #efefef;
+}
+
+dl.accordion {
+	background: #444;
+	width: 300px;
+	float: left;
+        
+}
+
+dl.accordion dt {
+	background: #333;	
+	padding: 10px 10px 10px 10px;
+	border-bottom: 1px solid #222;
+	border-top: 1px solid #444;
+	color: #CCC;
+	cursor: pointer;
+}
+
+dl.accordion dd {
+	display: none;
+	background: #444;
+	color: #EFEFEF;
+	margin: 0;
+}
+
+dl.accordion dd p {
+	font-size: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+dl.accordion .active {
+	display: block;
+}
+    </style>
+    
+    <style>
+        .top{
+            margin-top: 80px;
+        }
+        
+    </style>
+    <body>
+    <div class="container">
+        <div class="row top">
+          
+            <div class="col-md-2">
+             <dl class="accordion">
+    <dt>
+Add New Dose</dt>
+    <dd class=""> <!-- Default to active -->
+        <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_dose.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Dose<br><br></a>
+    </dd>
+
+    <dt>Add New Dose Schedule</dt>
+    <dd>
+   <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_dose_schedule.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Dose Schedule<br><br></a>
+    </dd>
+
+    <dt>Add New Generic Name</dt>
+    <dd>
+       <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_generic_name.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Generic Name<br><br></a>
+   
+    <dt>Add New Suggestion</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_suggestion.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Suggestion<br><br></a>
+   
+    </dd>
+    <dt>Add New Patient Advice Name</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_patient_advice_name.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Patient Advice Name<br><br></a>
+   
+    </dd>
+    <dt>Add New Complaint Group Name</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_complaint_group_name.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Complaint Group Name<br><br></a>
+   
+    </dd>
+    <dt>Add New Complaint Name</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_complaint.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Complaint Name<br><br></a>
+   
+    </dd>
+    <dt>Add New Drug Name</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_drug.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Drug Name<br><br></a>
+   
+    </dd>
+    <dt>Drug Help Setting</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/drug_help.html" style="text-decoration: none;">&nbsp;&nbsp;Drug Help Setting<br><br></a>
+   
+    </dd>
+    <dt>Add New Investigation Group Name</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_advice_group_name.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Investigation Group Name<br><br></a>
+   
+    </dd>
+    <dt>Add New Investigation Name</dt>
+    <dd>
+         <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_advice_name.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Investigation Name<br><br></a>
+   
+    </dd>
+    
+    </dd>
+</dl>
+            </div>
+            <div class="col-md-1"></div>
+             <div class="col-md-2">
+                
+          <dl class="accordion">
+    <dt>Add New Invest. by Prescription</dt>
+    <dd class=""> <!-- Default to active -->
+        <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_investigation_by_prescription_name.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Invest. by Prescription<br><br>
+        </a>
+   
+      
+    </dd>
+
+    <dt>Add New Comorbidity</dt>
+    <dd>
+        <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_comorbidity.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Comorbidity<br><br>
+        </a>
+    </dd>
+
+    <dt>Add New Personal History</dt>
+    <dd>
+     <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_personal_history.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Personal History<br><br>
+        </a>
+    </dd>
+   
+      <dt>Add New Systolic</dt>
+    <dd>
+       <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_physicalfindings_systolic.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Systolic<br><br>
+        </a>
+    </dd>
+       <dt>Add New Physical Findings</dt>
+    <dd>
+       <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_physicalfindings.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Physical Findings<br><br>
+        </a>
+    </dd>
+      <dt>Add New Diagnosis Category</dt>
+    <dd>
+       <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_diagnosis_category.html" style="text-decoration: none;">&nbsp;&nbsp;Add New Diagnosis Category<br><br>
+        </a>
+    </dd>
+    
+     <dt>Add New Immunophenotype Test Name</dt>
+    <dd>
+       <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_immunophenotype_test_name.html" style="text-decoration: none;">&nbsp;&nbsp;New Immunophenotype Test Name<br><br>
+        </a>
+    </dd>
+    
+    <dt>Add New Cytogenetic Test Name</dt>
+    <dd>
+       <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_cytogenetic_test_name.html" style="text-decoration: none;">&nbsp;&nbsp;New Cytogenetic Test Name<br><br>
+        </a>
+    </dd>
+      <dt>Add New Chemotherapy Region</dt>
+    <dd>
+       <a  href="<?php //save function name:-> 
+        echo base_url()?>welcome/add_new_chemotherapy_regimen.html" style="text-decoration: none;">&nbsp;&nbsp;New Chemotherapy Region<br><br>
+        </a>
+    </dd>
+</dl>
+                
+                
+            </div>
+            <div class="col-md-1"></div>
+             <div class="col-md-2">
+               <dl class="accordion">
+    <dt>Item 1</dt>
+    <dd class=""> <!-- Default to active -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Sequi voluptatum enim nobis eligendi error consectetur nemo 
+        distinctio expedita quis illo ipsam minima id dicta quisquam 
+        repudiandae a repellat officia. Minus.
+        </p>
+    </dd>
+
+    <dt>Item 2</dt>
+    <dd>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Sequi voluptatum enim nobis eligendi error consectetur nemo 
+        distinctio expedita quis illo ipsam minima id dicta quisquam 
+        repudiandae a repellat officia. Minus.
+        </p>
+    </dd>
+
+    <dt>Item 3</dt>
+    <dd>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Sequi voluptatum enim nobis eligendi error consectetur nemo 
+        distinctio expedita quis illo ipsam minima id dicta quisquam 
+        repudiandae a repellat officia. Minus.
+        </p>
+    <dt>Item 4</dt>
+    <dd>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Sequi voluptatum enim nobis eligendi error consectetur nemo 
+        distinctio expedita quis illo ipsam minima id dicta quisquam 
+        repudiandae a repellat officia. Minus.
+        </p>
+    </dd>
+    </dd>
+</dl>
+                
+                
+            </div>
+            
+            
+            <div class="col-md-1"></div>
+             <div class="col-md-2">
+                       <dl class="accordion">
+    
+    
+        <a href="<?php echo base_url();?>welcome/comorbidityInfo.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Comorbidity </dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+    
+        <a href="<?php echo base_url();?>welcome/personalHistorInfo.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Personal History</dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+        <a href="<?php echo base_url();?>welcome/familyHistory.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Family History</dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+    
+        <a href="<?php echo base_url();?>welcome/physical_findings.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Physical Findings</dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+        <a href="<?php echo base_url();?>welcome/back_prescription.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Chemotheraphy Region</dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+        <a href="<?php echo base_url();?>welcome/diagnosis.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Diagnosis</dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+        <a href="<?php echo base_url();?>welcome/chemotherapy_region.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Chemotherapy Regimen</dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+    
+        <a href="<?php echo base_url();?>welcome/my_prescription.html">
+    <dt><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Go To Prescription</dt>
+    </a>  
+    <dd>
+
+    </dd>
+    
+</dl>  
+                
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        
+    </div>
+        </body>
+          <script>
+        /*
+* Accordion v1.0
+* Developed by Yuriy Vaskevich
+* Simple jQuery Accordion plugin
+* Date: 02/24/2013
+* Usege: $("dl").SimleAccordion();
+* This work is licensed under a Creative Commons Attribution-ShareAlike 3.0
+* Unported License: http://creativecommons.org/licenses/by-sa/3.0/
+*/
+(function( $ ) {
+
+	$.fn.SimpleAccordion = function () {
+
+		// Cache element
+		var accordion = $(this);
+
+		// Fade in on load
+		accordion.hide().fadeIn();
+
+		// Open active panel
+		accordion.find(".active").show();
+
+		// Listen to onClick
+		accordion.find("dt").on("click", function (){
+
+			// Cache current
+			var current = $(this).next("dd");
+
+			// Check if not active
+			if (current.is(":hidden")) {
+
+				// Open curren panel
+				current.slideDown().siblings("dd").slideUp();
+
+			}
+
+		});
+
+	};
+
+})( jQuery );
+
+$(".accordion").SimpleAccordion();  
+        </script>

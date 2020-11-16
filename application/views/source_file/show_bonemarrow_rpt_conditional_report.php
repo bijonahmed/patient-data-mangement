@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+<link href="<?php echo base_url(); ?>resource/css/jquery-ui.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>resource/themes/base/jquery.ui.all.css">
+        <script src="<?php echo base_url(); ?>resource/jquery-1.9.1.js"></script>
+        <script src="<?php echo base_url();?>resource/js/jquery-ui.js"></script>
+
+        <script src="<?php echo base_url(); ?>resource/Context.js-master/context.js"></script>
+        <script src="<?php echo base_url(); ?>resource/Context.js-master/demo.js"></script>
+
+        <link href="<?php echo base_url(); ?>resource/Context.js-master/context.bootstrap.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>resource/Context.js-master/context.standalone.css" rel="stylesheet">
+    <!-- Bootstrap -->
+<script src="<?php echo base_url(); ?>data_table/js/jquery.js"></script>
+<script language="javascript" src="<?php echo base_url();?>resource/modal.popup.js"></script>
+       <script>
+  $(document).ready(function() {
+
+		//Change these values to style your modal popup
+		var align = 'center';									//Valid values; left, right, center
+		var top = 40; 											//Use an integer (in pixels)
+		var width = 900; 										//Use an integer (in pixels)
+		var padding = 10;										//Use an integer (in pixels)
+		var backgroundColor = '#FFFFFF'; 						//Use any hex code
+		var source = '<?php echo base_url();?>data_record/preview_date_wise_statment_print'; 								//Refer to any page on your server, external pages are not valid e.g. http://www.google.co.uk
+		var borderColor = '#333333'; 							//Use any hex code
+		var borderWeight = 4; 									//Use an integer (in pixels)
+		var borderRadius = 5; 									//Use an integer (in pixels)
+		var fadeOutTime = 300; 									//Use any integer, 0 = no fade
+		var disableColor = '#666666'; 							//Use any hex code
+		var disableOpacity = 40; 								//Valid range 0-100
+		var loadingImage = '<?php echo base_url();?>resource/loading.gif';		//Use relative path from this page
+
+		//This method initialises the modal popup
+        $(".bijon").click(function() {
+            modalPopup(align, top, width, padding, disableColor, disableOpacity, backgroundColor, borderColor, borderWeight, borderRadius, fadeOutTime, source, loadingImage);
+        });
+
+		//This method hides the popup when the escape key is pressed
+		$(document).keyup(function(e) {
+			if (e.keyCode == 27) {
+				closePopup(fadeOutTime);
+			}
+		});
+
+    });
+</script>
+ <script language="javascript" type="text/javascript">
+        function printDiv(divID) {
+            //Get the HTML of div
+            var divElements = document.getElementById(divID).innerHTML;
+            //Get the HTML of whole page
+            var oldPage = document.body.innerHTML;
+
+            //Reset the page's HTML with div's HTML only
+            document.body.innerHTML = 
+              "<html><head><title></title></head><body>" + 
+              divElements + "</body>";
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+
+          
+        }
+    </script>
+<script>
+ $(document).ready(function() {
+$(".btnPrint").printPage({
+url: "<?php echo base_url(); ?>data_record/preview_date_wise_statment_print.html",
+attr: "href",
+message:"Your document is being created Print"
+});
+});
+</script>
+
+  </head>
+  <body>
+
+
+<body>  <br><br><br><br>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-1">
+                
+                
+                
+            </div>
+             <div class="col-md-10">
+               
+<div class="form-group has-success">
+    <div align="right">
+<button type="button" class="btn btn-default" onclick="javascript:printDiv('printablediv')"><i class="icon-print"></i> <span class="glyphicon glyphicon-zoom-in"></span> Printing</button>
+
+<?php
+/*
+<a href="<?php echo base_url();?>data_record/pdf_all_comorbidity_info"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-book"></span> PDF</button>
+    </a>
+ */
+
+?>
+<?php
+/*
+  <button type="button" class="btn btn-success" id="btnExport"><span class="glyphicon glyphicon-stats"></span> Excel</button>
+ */
+?>
+   
+
+
+    </div>
+    <div id="printablediv" style="width: 100%; background-color: none; height: auto">
+    <div align="center">
+        <strong>Bone Marrow Report<BR><font color="red"></font> </strong>
+       From <?php echo $date_from;?> To <?php echo $date_to;?>
+        <br>
+        
+     
+    </div>
+        <div id="dvData">
+        
+               <?php
+$x=1;
+foreach($bonemarrow_rpt_searching as $data) {
+?>
+            
+ 
+ <br>
+ <hr>
+  <strong><font color="#000000">
+          
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Patient ID: <?php  $length=strlen($data->manual_pid); 
+        $part1=substr_replace("$data->manual_pid","/",2);
+        $part2=substr_replace("$data->manual_pid","",$length-2);
+        $manual_pid=$part1.$part2;
+    echo  $manual_pid;?></strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Patient Name: <?php echo $data->patient_name;?></strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age: <strong><?php echo $data->age;?></strong>
+Sex : <strong><?php echo $data->sex;?></strong>, Date : <strong><?php echo $data->reciv_date;?></strong>
+     
+          
+          
+          </font></strong><br>
+
+
+ <hr> 
+
+
+                                <?php
+                            $x = 1; {
+                                ?>
+                                    <?php
+                                $patient_id = $this->session->userdata('patient_id');
+                                if (isset($patient_id)) {
+
+                                    if ($bonemarrow_rpt_searching) {
+                                        foreach ($bonemarrow_rpt_searching as $pres) {
+                                            ?>
+
+                                            Date : <?php echo $pres->reciv_date; ?><br>
+                                            <?php
+                                            if ($pres->introudction != Null) {
+                                                ?>     
+                                                Introduction :<?php echo $pres->introudction; ?> <br>
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->aspiration != Null) {
+                                                ?>   
+                                                Aspiration :<?php echo $pres->aspiration; ?><br>
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->stain_used != Null) {
+                                                ?> 
+                                                Stain_used : <?php echo $pres->stain_used; ?><br>
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->cellularity_inf != Null) {
+                                                ?>
+                                                Cellularity_info:  <?php echo $pres->cellularity_inf; ?> <br>
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->ery != Null) {
+                                                ?>
+                                                Erythropoesis : <?php echo $pres->ery; ?><br>
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->granu != Null) {
+                                                ?>
+                                                Granulopoesis : <?php echo $pres->granu; ?><br>
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->mega != Null) {
+                                                ?>
+                                                Megakaryocytes: <?php echo $pres->mega; ?><br>
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->ly_his_pls_cells != Null) {
+                                                ?>
+                                                Lymphocytes, Histocytes and Plasma Cell: <?php echo $pres->ly_his_pls_cells; ?> <br>
+                              <?php
+                    }
+                    ?>
+                              <?php
+                                            if ($pres->parasites != Null) {
+                                                ?>
+                                                Parasite: <?php echo $pres->parasites; ?><br>
+                              <?php
+                    }
+                    ?>
+                                                <?php
+                                            if ($pres->comment != Null) {
+                                                ?>
+
+                                                Comment: <?php echo $pres->comment; ?><br>
+                                                <?php
+
+                                            }
+                                            ?>
+                                                <?php
+                                            if ($pres->reviewed_by != Null) {
+                                                ?>
+                                                Reviewed by: <?php echo $pres->reviewed_by; ?><br>
+                                                <?php
+                                            }
+                                            ?>           
+                                                <br>  <br> <hr>
+                                                <?php
+                                            $x++;
+                                        }
+                                    } else {
+                                        echo "No available data";
+                                    }
+                                }
+                            }
+                            ?>
+
+                                                  
+                                <?php
+                        }
+                        ?>          
+            
+         
+            </div>
+    </div>
+        </div> 
+         
+         
+     </div> 
+                
+                
+            </div>
+             
+            
+        </div>
+    </div>
+    
+    
+    
+</body>
+<script>
+$("#btnExport").click(function(e) {
+    window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
+    e.preventDefault();
+}) 
+    </script>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Biochemistry Report</title>
+
+
+<link rel="stylesheet" href="<?php echo base_url()?>resource/css/jquery-ui.css" />
+ <script src="<?php echo base_url();?>data_table/js/jquery.js"></script>
+<script src="<?php echo base_url();?>resource/js/jquery-ui.js"></script>
+<link href="<?php echo base_url();?>resource/css/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo base_url(); ?>resource/themes/base/jquery.ui.all.css">
+     
+<script language="javascript" src="<?php echo base_url();?>resource/modal.popup.js"></script>
+<script language="javascript" src="<?php echo base_url();?>resource/jquery.printPage.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#patient_id").focus();
+                $(":focus").css("background-color", "white");
+            });
+        </script>
+     <script>
+  $(document).ready(function() {
+
+		//Change these values to style your modal popup
+		var align = 'center';									//Valid values; left, right, center
+		var top = 40; 											//Use an integer (in pixels)
+		var width = 900; 										//Use an integer (in pixels)
+		var padding = 10;										//Use an integer (in pixels)
+		var backgroundColor = '#FFFFFF'; 						//Use any hex code
+		var source = '<?php echo base_url();?>welcome/print_preview_multireport'; 								//Refer to any page on your server, external pages are not valid e.g. http://www.google.co.uk
+		var borderColor = '#333333'; 							//Use any hex code
+		var borderWeight = 4; 									//Use an integer (in pixels)
+		var borderRadius = 5; 									//Use an integer (in pixels)
+		var fadeOutTime = 300; 									//Use any integer, 0 = no fade
+		var disableColor = '#666666'; 							//Use any hex code
+		var disableOpacity = 40; 								//Valid range 0-100
+		var loadingImage = '<?php echo base_url();?>resource/loading.gif';		//Use relative path from this page
+
+		//This method initialises the modal popup
+        $(".bijon").click(function() {
+            modalPopup(align, top, width, padding, disableColor, disableOpacity, backgroundColor, borderColor, borderWeight, borderRadius, fadeOutTime, source, loadingImage);
+        });
+
+		//This method hides the popup when the escape key is pressed
+		$(document).keyup(function(e) {
+			if (e.keyCode == 27) {
+				closePopup(fadeOutTime);
+			}
+		});
+
+    });
+</script>
+<script>
+ $(document).ready(function() {
+$(".btnPrint").printPage({
+url: "<?php echo base_url(); ?>welcome/print_preview_urinere.html",
+attr: "href",
+message:"Your document is being created Print"
+});
+});
+</script>
+        <style> 
+            .borderdiv
+            {
+                background-color: blue;
+                border-radius: 39px;
+            }
+        </style>
+
+    </head>
+    <br><br><br>
+
+
+    <body>
+    
+        
+ <div class="container">
+      <div class="">
+        
+            </div>
+      <style>
+    .fontstyleing{
+        font-size: 19px;
+        
+    }
+</style>
+  <style>
+    .fontstyleing{
+        font-size: 25px;
+        
+    }
+</style>
+     <div class="container">
+             <center><div class="fontstyleing"><u>Single Line Report</u></div></center>
+       
+         
+             <form name="multiple report" method="post" action="<?php echo base_url(); ?>data_record/save_multiple_reporting.html">
+             <div class="form-group has-success">
+                <div class="">
+
+  
+<div class="row" style="">
+    
+ 
+    <div class="col-xs-2">
+
+        <input type="text" name="reciv_date" data-date-format="dd-mm-yyyy"  class="form-control" id="reciv_date" placeholder="Reci.Date" required="1" value="<?php echo date("d-m-Y",strtotime($this->session->userdata('reciv_date')));?>">
+    </div>
+  
+   
+   
+                    </div>
+                    <br>
+                </div>
+                 
+                    <div class="row" >
+
+                    <div class="container">
+  
+                        <div class="form-group has-success">
+
+                            <div class="row">
+<div class="">
+                                    <div class="col-xs-2">
+<select name="path_test_id" class="form-control" id="path_test_id" onChange="unit_info(this.value);show_normal_range(this.value);">
+
+<option value="">--- Select ---</option>
+<option value="">None</option>
+<?php
+foreach ($bichemistrydata as $data) {
+?>
+<option value="<?php echo $data->path_test_id; ?>"> <?php echo $data->test_name; ?> </option>
+<?php } ?>
+</select>
+                                    </div>
+        <div class="col-xs-1">
+            <input type="text" name="result" id="result" class="form-control" placeholder="Result">
+        </div>
+                                   
+<div class="col-xs-2">
+   
+      <select name="unit"  class="form-control" id="unit" required="1">
+    <option></option>
+</select>
+</div>
+<div class="col-xs-2">
+<select name="normal_range" class="form-control" id="normal_range">
+<option value=" "></option>
+
+</select>
+</div>
+    
+    <div class="col-sm-1">
+     
+         <select name="display" class="form-control" id="complaint_timing" style="width:auto;">
+                                                          
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                            
+                                                        </select>
+    </div>
+        <div class="col-md-4">
+        <button class="btn btn-primary" onClick="return save_()"><span class="glyphicon glyphicon-saved"></span>&nbsp;Save</button>
+      
+         <button type="button" class="btn btn-success btn bijon" ><i class="icon-zoom-in"></i> <span class="glyphicon glyphicon-zoom-in"></span> Preview</button>
+        <button type="button" class="btn btn-info btn btnPrint"><i class="icon-print"></i> <span class="glyphicon glyphicon-print"></span>  Printing</button>
+       
+             <a href="<?php echo base_url();?>welcome/cancel_haematology.html">
+        <button type="button" class="btn btn-danger"><i class="icon-print"></i> CLOSE</button>
+    </a>
+        
+         </div>
+       </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   
+                </div>
+<table cellpadding="0" cellspacing="0" border="0" class="table" id="example_">
+<thead>
+<tr>
+<th>SL NO</th>
+<th>Test Name</th>
+<th>Result</th>
+<th>Unit</th>
+<th>N/R</th>
+<th>Display</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<?php
+$x=1; {
+
+?>
+<?php
+$patient_id=$this->session->userdata('patient_id');
+if(isset($patient_id)) {
+
+
+
+
+
+foreach($multiplereport as $data) {
+?>
+
+<tr>
+<td><?php echo $x;?></td>
+<td><?php echo $data->test_name;?></td>
+<td><?php echo $data->result;?> </td>
+<td><?php echo $data->unit;?> </td>
+<td><?php echo $data->normal_range;?> </td>
+<td><?php echo $data->display;?> </td>
+<td>
+     
+
+    <a class="" href="<?php echo base_url();?>data_record/delete_multiple_report/<?php echo $data->multiple_report_id;?>" onClick="return save();" style="text-decoration:none"><i class="icon-trash icon-black"></i><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
+</td>
+
+<?php
+$x++;
+}
+}
+}
+?>
+</tr>
+
+</tbody>
+</table>
+
+            
+</div>
+                 </div>
+ 
+</div>
+        
+        
+          <script>
+    //onclick retrive delivery date
+    function unit_info(str)
+    {
+        var  strUrl="<?php echo base_url(); ?>data_record/test_wise_unit.html?path_test_id="+str;
+        //alert(str);
+        var xmlhttp;    
+        if (str=="")
+        {
+            document.getElementById("unit").innerHTML="";
+            return;
+        }
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                document.getElementById("unit").innerHTML=xmlhttp.responseText;
+                //alert(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.open("GET",strUrl,true);
+        xmlhttp.send();
+    }
+</script> 
+
+
+ <script>
+    //onclick retrive delivery date
+    function show_normal_range(str)
+    {
+        var  strUrl="<?php echo base_url(); ?>data_record/test_wise_normal_range.html?path_test_id="+str;
+        //alert(str);
+        var xmlhttp;    
+        if (str=="")
+        {
+            document.getElementById("normal_range").innerHTML="";
+            return;
+        }
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                document.getElementById("normal_range").innerHTML=xmlhttp.responseText;
+                //alert(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.open("GET",strUrl,true);
+        xmlhttp.send();
+    }
+</script>
+<script>
+//onclick retrive delivery date
+function test_groupinfo(str)
+{
+var strUrl = "<?php echo base_url(); ?>data_record/test_group_wise_test_name.html?path_test_group_id=" + str;
+//alert(str);
+var xmlhttp;
+if (str == "")
+{
+document.getElementById("show_test_name_left").innerHTML = "";
+return;
+}
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp = new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function()
+{
+if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+{
+document.getElementById("show_test_name_left").innerHTML = xmlhttp.responseText;
+//alert(xmlhttp.responseText);
+}
+}
+xmlhttp.open("GET", strUrl, true);
+xmlhttp.send();
+}
+</script>
+ <script>
+    function save()
+    {
+        chk = confirm("Are you sure");
+        if (chk)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+<script type="text/javascript">
+    $('#reciv_date').datepicker()
+</script>
+
+<script type="text/javascript">
+    $('#deli_date').datepicker()
+</script>      
